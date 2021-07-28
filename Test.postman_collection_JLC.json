@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "0a235e0b-67c4-496a-b318-2547e28659dc",
+		"name": "Falabella Fin Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/people/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"tests[\"Estado 200\"] = responseCode.code === 200;\r",
+							"console.log(responseCode);\r",
+							"\r",
+							"pm.test(\"Status OK\", function() {\r",
+							"    pm.response.to.be.ok;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"El tiempo de Response es menor de 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test('Existe propiedad lastName', function() {\r",
+							"    var Ajv = require('ajv');\r",
+							"    ajv = new Ajv(),\r",
+							"    schema = { //Esquema contiene un arreglo\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {//En este array debe haber un \"Properties Object\"\r",
+							"                    \"type\": \"object\", //Estas son las propiedades dentro de este objeto. Esto probará el TIPO de propiedad.\r",
+							"                    \"properties\": {\r",
+							"                        \"lastName\": { \"type\": \"string\" },\r",
+							"                        \r",
+							"            },\"required\" : [\"lastName\"]//Propiedades enumeradas estén presentes\r",
+							"        }\r",
+							"    };\r",
+							"    \r",
+							"    var validate = ajv.compile(schema);\r",
+							"    \r",
+							"    var valid = validate(jsonData)\r",
+							"    if(valid === false){\r",
+							"        console.log('Invalid: ' + ajv.errorsText(validate.errors));\r",
+							"    }\r",
+							"    \r",
+							"    pm.expect(valid).to.be.true;\r",
+							"  \r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test('Existe propiedad firstMame', function() {\r",
+							"    var Ajv = require('ajv');\r",
+							"    ajv = new Ajv(),\r",
+							"    schema = { //Esquema contiene un arreglo\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {//En este array debe haber un \"Properties Object\"\r",
+							"                    \"type\": \"object\", //Estas son las propiedades dentro de este objeto. Esto probará el TIPO de propiedad.\r",
+							"                    \"properties\": {\r",
+							"                        \"firstMame\": { \"type\": \"string\" },\r",
+							"                        \r",
+							"            },\"required\" : [\"firstMame\"]//Propiedades enumeradas estén presentes\r",
+							"        }\r",
+							"    };\r",
+							"    \r",
+							"    var validate = ajv.compile(schema);\r",
+							"    \r",
+							"    var valid = validate(jsonData)\r",
+							"    if(valid === false){\r",
+							"        console.log('Invalid: ' + ajv.errorsText(validate.errors));\r",
+							"    }\r",
+							"    \r",
+							"    pm.expect(valid).to.be.true;\r",
+							"  \r",
+							"});\r",
+							"\r",
+							"pm.test('Existe propiedad age', function() {\r",
+							"    var Ajv = require('ajv');\r",
+							"    ajv = new Ajv(),\r",
+							"    schema = { //Esquema contiene un arreglo\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {//En este array debe haber un \"Properties Object\"\r",
+							"                    \"type\": \"object\", //Estas son las propiedades dentro de este objeto. Esto probará el TIPO de propiedad.\r",
+							"                    \"properties\": {\r",
+							"                        \"age\": { \"type\": \"number\" },\r",
+							"                        \r",
+							"            },\"required\" : [\"age\"]//Propiedades enumeradas estén presentes\r",
+							"        }\r",
+							"    };\r",
+							"    \r",
+							"    var validate = ajv.compile(schema);\r",
+							"    \r",
+							"    var valid = validate(jsonData)\r",
+							"    if(valid === false){\r",
+							"        console.log('Invalid: ' + ajv.errorsText(validate.errors));\r",
+							"    }\r",
+							"    \r",
+							"    pm.expect(valid).to.be.true;\r",
+							"  \r",
+							"});\r",
+							"\r",
+							"pm.test('Existe propiedad id', function() {\r",
+							"    var Ajv = require('ajv');\r",
+							"    ajv = new Ajv(),\r",
+							"    schema = { //Esquema contiene un arreglo\r",
+							"        \"type\": \"array\",\r",
+							"        \"items\": {//En este array debe haber un \"Properties Object\"\r",
+							"                    \"type\": \"object\", //Estas son las propiedades dentro de este objeto. Esto probará el TIPO de propiedad.\r",
+							"                    \"properties\": {\r",
+							"                        \"id\": { \"type\": \"string\" },\r",
+							"                        \r",
+							"            },\"required\" : [\"id\"]//Propiedades enumeradas estén presentes\r",
+							"        }\r",
+							"    };\r",
+							"    \r",
+							"    var validate = ajv.compile(schema);\r",
+							"    \r",
+							"    var valid = validate(jsonData)\r",
+							"    if(valid === false){\r",
+							"        console.log('Invalid: ' + ajv.errorsText(validate.errors));\r",
+							"    }\r",
+							"    \r",
+							"    pm.expect(valid).to.be.true;\r",
+							"  \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"firstMame\": \"Carlos\",\n        \"lastName\": \"Campos\",\n        \"age\": 59\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/people/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/people/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"firstMame\": \"Carlos\",\n        \"lastName\": \"Campos\",\n        \"age\": 59\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/people/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"people",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
